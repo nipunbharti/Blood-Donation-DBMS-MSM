@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+body{
+	margin: 0;
+}
+
+.headersContainer{
+	text-align: center;
+	line-height: 100px;
+}
+
+.donorHeader{
+	color: white;
+	display: inline;
+	padding: 20px;
+	font-size: 25px;
+	font-family: 'Lato', sans-serif;
+	background: grey;
+	transition: 0.2s background;
+}
+
+.donorHeader:hover{
+	background: lightgray;
+}
+
+.madeBy{
+	font-family: 'Lato', sans-serif;
+	text-align: center;
+	font-size: 25px;
+}
+
+a{
+	text-decoration: none;
+	color: white;
+}
+
+.header{
+	font-family: 'Lato', sans-serif;
+	text-align: center;
+	font-size: 25px;
+}
+
+.insertions{
+	text-align: center;
+}
+
+.insertDonor{
+	padding: 10px;
+	
+	font-family: 'Lato', sans-serif;
+	font-size: 25px;
+}
+
+.insertPatient{
+	padding: 10px;
+	
+	font-family: 'Roboto', sans-serif;
+	font-size: 25px;
+}

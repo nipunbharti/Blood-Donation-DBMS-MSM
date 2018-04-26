@@ -1,0 +1,26 @@
+<% include partials/patient %>
+
+<div class="patientDetails">
+	<table style="width: 100%" id="t01">
+		<tr>
+			<th>Name</th>
+			<th>Age</th>
+			<th>Sex</th>
+			<th>Blood Group</th>
+			<th>Amount Taken</th>
+			<th>Patient ID</th>
+		</tr>
+		<% for(var i=0;i<result.length;i++){ %>
+			<tr>
+				<td><%= result[i].Name%></td>
+				<td><%= result[i].Age%></td>
+				<td><%= result[i].Sex%></td>
+				<td><%= result[i].Blood_Group%></td>
+				<td><%= result[i].Amount_taken%></td>
+				<td><%= result[i].Patient_ID%></td>
+			</tr>
+		<% } %>
+	</table>
+</div>
+
+<% include partials/footer%>

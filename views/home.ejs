@@ -1,0 +1,49 @@
+<% include partials/header%>
+
+<div class="mainContainer">
+	<div class="headersContainer">
+		<div class="donorHeader">
+			<a href="donordetails">Donor details</a>
+		</div>
+		<div class="donorHeader">
+			<a href="bankdetails">Bank details</a>
+		</div>
+		<div class="donorHeader">
+			<a href="patientdetails" onclick="c()">Patient details</a>
+		</div>
+	</div>
+	<div class="insertions">
+		<div class="insertDonor">
+			Insert Donor<br>
+			<form action="/adddonor" method="POST">
+				<input type="text" name="newdonorName" placeholder="Donor Name"><br>
+				<input type="text" name="newdonorAge" placeholder="Donor Age"><br>
+				<input type="text" name="newdonorSex" placeholder="Donor Sex"><br>
+				<input type="text" name="newdonorBlood" placeholder="Donor Blood Group"><br>
+				<input type="text" name="newdonorCId" placeholder="Donor CId"><br>
+				<input type="text" name="newdonorAmount" placeholder="Donor Amount"><br>
+				<button>Add Donor</button>
+			</form>
+		</div>
+		<div class="insertPatient">
+			Insert Patient<br>
+			<form action="/addpatient" method="POST">
+				<input type="text" name="newpatientName" placeholder="Patient Name"><br>
+				<input type="text" name="newpatientAge" placeholder="Patient Age"><br>
+				<input type="text" name="newpatientSex" placeholder="Patient Sex"><br>
+				<input type="text" name="newpatientBlood" placeholder="Patient Blood Group"><br>
+				<input type="text" name="newpatientAmount" placeholder="Patient Amount Taken"><br>
+				<input type="text" name="newpatientPId" placeholder="Patient ID"><br>
+				<button>Add Patient</button>
+			</form>
+		</div>
+	</div>
+	<div class="header">
+		<b>DBMS</b> Project, <b>Blood Donation System</b>
+	</div>
+	<!-- <div class="madeBy">
+		<b>Made By:</b><br> Aditya Navghare, Nishant Singh, Vivek Yadav, Harsha
+	</div> -->
+</div>
+
+<% include partials/footer%>
