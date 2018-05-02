@@ -9,8 +9,8 @@ app.set("view engine","ejs");
 
 var con = mysql.createConnection({
   host: "localhost",
-  user: "root",
-  password: "",
+  user: "Your username",
+  password: "Your password",
   database: 'blood',
   multipleStatements: true
 });
@@ -92,15 +92,33 @@ app.post("/adddonor", function(req, res){
 })
 
 app.post("/addpatient", function(req, res){
-	var statement = "insert into DONOR_DETAIL values ('" + req.body.newpatientName + "'," + req.body.newpatientAge + ",'" + req.body.newpatientSex + "','" + req.body.newpatientBlood + "'," + req.body.newpatientAmount + ",'" + req.body.newpatientPId + "');";
+	var statement = "insert into PATIENT_DETAILS values ('" + req.body.newpatientName + "'," + req.body.newpatientAge + ",'" + req.body.newpatientSex + "','" + req.body.newpatientBlood + "'," + req.body.newpatientAmount + ",'" + req.body.newpatientPId + "');";
 	console.log(statement);
+	var x;
 	con.query(statement, function(err, result, fields){
 		if(err) throw err;
 		console.log(result);
 	});
-	var statement2 = "update BANK_DETAILS set Amount =((select sum(Amount) from BANK_DETAILS where Blood_Group = '" + req.body.newpatientBlood + "')" + "- (select sum(Amount_taken) from PATIENT_DETAILS where Blood_Group = '" + req.body.newdonorBlood + "')) where Blood_Group = '" + req.body.newdonorBlood +"'";
+	var statement1 = "select ((select sum(Amount) from BANK_DETAILS where Blood_Group = '" + req.body.newpatientBlood + "')" + "- (select sum(Amount_taken) from PATIENT_DETAILS where Blood_Group = '" + req.body.newpatientBlood + "')) as Result";
+	console.log(statement1);
+	con.query(statement1, function(err, result, fields){
+		if(err) throw err;
+		// console.log(result);
+		x = result;
+		updateBankPatient(x[0].Result, req);
+	});
 	res.redirect("/");
 })
+
+function updateBankPatient(result, req){
+	console.log(result);
+	var statement2 = "update BANK_DETAILS set Amount =" + result + " where Blood_Group = '" + req.body.newpatientBlood +"'";
+	console.log(statement2);
+	con.query(statement2, function(err, result, fields){
+		if(err) throw err;
+		console.log(result);
+	});
+}
 
 app.listen(3000, function(){
 	console.log("3000");
